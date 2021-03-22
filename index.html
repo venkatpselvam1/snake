@@ -5,13 +5,28 @@
 <style>
 body {
     padding-bottom: 20px;
-    background: green;
+    background: rgb(114, 114, 114);
 }
+.heading-css{
+	color: orange;
+}
+
 div#board {
     margin-left: 100px;
 	background : orange;
 	height : 500px;
 	width : 500px;
+	border-style: solid;
+	border-width: 5px;
+	float: left;
+}
+.score-card-css{
+	border-style: solid;
+	border-width: 5px;
+	float: left;
+	margin: 50px;
+	width: 200px;
+	padding: 10px;
 }
 #board div.board-row div.board-column {
     width: 10px;
@@ -39,10 +54,11 @@ div#board {
 </style>
 
 <body>
-<h1>Snake</h1>
+<h1 class="heading-css">Snake game</h1>
 <div id="board">
 </div>
-
+<div class="score-card-js score-card-css">
+	Point is 0
 </div>
 </body>
 
@@ -50,6 +66,7 @@ div#board {
 $(document).ready(function () {
 	var snakeGame = 
 	{
+		score : 0,
 		snake : [{x:20, y:20}, {x:20, y:21}, {x:20, y:22}, {x:20, y:23}, {x:20, y:24}],
 		direction : 2,
 		initBoard : function()
@@ -80,15 +97,17 @@ $(document).ready(function () {
 			gameObject.snake.unshift(newHead);
 			if($("#board div#"+newHead.x+".board-row div#"+newHead.y+".board-column").length == 0 || $("#board div#"+newHead.x+".board-row div#"+newHead.y+".board-column").hasClass("snake"))
 			{
-				alert("game over");
+				$(".score-card-js").html($(".score-card-js").html()+" Game over");
 			}
 			else
 			{
 			$("#board div#"+newHead.x+".board-row div#"+newHead.y+".board-column").addClass("snake");
 			if($("#board div#"+newHead.x+".board-row div#"+newHead.y+".board-column").hasClass("prey"))
 			{
+				gameObject.score+=10;
 				$("#board div#"+newHead.x+".board-row div#"+newHead.y+".board-column").removeClass("prey");
 				gameObject.snake.push(tail);
+				$(".score-card-js").html("Point is "+gameObject.score+" .");
 				var point = gameObject.getRandomEmpty();
 				$("#board div#"+point.x+".board-row div#"+point.y+".board-column").addClass("prey");
 			}
