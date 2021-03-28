@@ -1,0 +1,54 @@
+
+body {
+    padding-bottom: 20px;
+    background: rgb(114, 114, 114);
+}
+.heading-css{
+	color: orange;
+}
+
+div#board {
+    margin-left: 100px;
+	background : orange;
+	height : 500px;
+	width : 500px;
+	border-style: solid;
+	border-width: 5px;
+	float: left;
+}
+.score-card-css{
+	border-style: solid;
+	border-width: 5px;
+	float: left;
+	margin: 50px;
+	width: 200px;
+	padding: 10px;
+}
+#board div.board-row div.board-column {
+    width: 10px;
+    height: 10px;
+}
+
+#board div.board-row div.board-column.snake {
+    background: white;
+}
+#board div.board-row div.board-column.prey {
+    background: yellow;
+}
+
+#board div.board-row div.board-column.snake.selfbite {
+    background: rgb(255, 102, 0);
+}
+
+.board-row {
+    line-height: 0;
+    font-size: 0;
+}
+.board-column {
+    margin: 0;
+    display: inline-block;
+    font-size: 0;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
